@@ -24,26 +24,4 @@ public sealed class PlantAnalyzerBoundUserInterface : BoundUserInterface
         _window.OpenToLeft();
     }
 
-    protected override void ReceiveMessage(BoundUserInterfaceMessage message)
-    {
-        if (_window == null)
-            return;
-
-        if (message is not PlantAnalyzerScannedSeedPlantInformation cast)
-            return;
-
-        _window.Populate(cast);
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        base.Dispose(disposing);
-        if (!disposing)
-            return;
-
-        if (_window != null)
-            _window.OnClose -= Close;
-
-        _window?.Dispose();
-    }
 }
