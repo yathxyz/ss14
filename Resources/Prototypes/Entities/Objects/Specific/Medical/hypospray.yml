@@ -185,6 +185,29 @@
     tags: []
 
 - type: entity
+  name: Gop Jammar
+  parent: ChemicalMedipen
+  id: Neurosting
+  description: The high-handed enemy. Instant death. Contains gomjabbarine.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/medipen.rsi
+    layers:
+    - state: penacid
+      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: penacid_empty
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 1
+        reagents:
+        - ReagentId: Gomjabbarine
+          Quantity: 1
+
+- type: entity
   name: brute auto-injector
   parent: ChemicalMedipen
   id: BruteAutoInjector

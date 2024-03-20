@@ -75,3 +75,6 @@ reagent-desc-vestine = Has an adverse reaction within the body causing major jit
 
 reagent-name-tazinide = tazinide
 reagent-desc-tazinide = A highly dangerous metallic mixture which can interfere with most movement through an electrifying current.
+
+reagent-name-gomjabbarine = gomjabbarine
+reagent-desc-gomjabbarine = The most toxic substance in the known universe. Instant death.

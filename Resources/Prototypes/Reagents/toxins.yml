@@ -46,6 +46,23 @@
         probability: 0.33
 
 - type: reagent
+  id: Gomjabbarine
+  name: reagent-name-gomjabbarine
+  group: Toxins
+  desc: reagent-desc-gomjabbarine
+  flavor: bitter
+  color: "#ff0000"
+  physicalDesc: reagent-physical-desc-nondescript
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 1000
+
+
+- type: reagent
   id: ChloralHydrate
   name: reagent-name-chloral-hydrate
   group: Toxins
