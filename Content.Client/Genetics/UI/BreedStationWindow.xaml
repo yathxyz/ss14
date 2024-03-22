@@ -1,0 +1,14 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                      MinSize="620 670"
+                      Title="Test Window">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="5" SeparationOverride="10">
+        <BoxContainer Orientation="Horizontal">
+            <Label Text="Test Label" />
+            <Control HorizontalExpand="True" />
+            <Button MinSize="80 0" Name="TestButton" Access="Public" Text="Click Me" />
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

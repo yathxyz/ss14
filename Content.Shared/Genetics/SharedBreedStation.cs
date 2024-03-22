@@ -1,6 +1,6 @@
 using Robust.Shared.Serialization;
 
-namespace Content.Client.Genetics;
+namespace Content.Shared.Genetics;
 
 public sealed class SharedBreedStation
 {
