@@ -1,13 +1,13 @@
 - type: entity
   id: breed_station
   parent: [ BaseMachinePowered, ConstructibleMachine ]
-  name: Biosonica BreedStation
-  description: A forward genetics machine for mapping loci.
+  name: BreedStation
+  description: Some description here.
   placement:
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: Structures/Machines/genesplicer.rsi
+    sprite: Structures/Machines/mixer.rsi
     snapCardinals: true
     layers:
     - state: mixer_empty
@@ -15,8 +15,23 @@
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
   - type: Icon
+    sprite: Structures/Machines/mixer.rsi
+    state: mixer_loaded
+  - type: ChemMaster
+    pillDosageLimit: 20
   - type: Physics
     bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
   - type: Destructible
     thresholds:
     - trigger:
@@ -31,13 +46,53 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: ActivatableUI
-    key: enum.BreedStationUiKey.Key
+    key: enum.ChemMasterUiKey.Key
   - type: ActivatableUIRequiresPower
   - type: UserInterface
     interfaces:
-    - key: enum.BreedStationUiKey.Key
-      type: BreedStationBoundUserInterface
+    - key: enum.ChemMasterUiKey.Key
+      type: ChemMasterBoundUserInterface
   - type: ApcPowerReceiver
     powerLoad: 250
-
-  # TODO Construction recipe
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  # Machine / Construction stuff
+  - type: WiresPanel
+  - type: Wires
+    boardName: wires-board-name-chemmaster
+    layoutId: chem_master
+  - type: Machine
+    board: ChemMasterMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      beakerSlot: !type:ContainerSlot
+      outputSlot: !type:ContainerSlot
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: ItemSlots
+    slots:
+      beakerSlot:
+        whitelist:
+          components:
+          - FitsInDispenser
+      outputSlot:
+        whitelistFailPopup: chem-master-component-cannot-put-entity-message
+        whitelist:
+          tags:
+          - Bottle
+          - PillCanister
+  - type: SolutionContainerManager
+    solutions:
+      buffer: {}
+  - type: DumpableSolution
+    solution: buffer
+    unlimited: true
+  - type: GuideHelp
+    guides:
+    - Chemicals
+    - Chemist
