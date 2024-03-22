@@ -1,0 +1,43 @@
+- type: entity
+  id: breed_station
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: Biosonica BreedStation
+  description: A forward genetics machine for mapping loci.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/genesplicer.rsi
+    snapCardinals: true
+    layers:
+    - state: mixer_empty
+    - state: mixer_screens
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: Icon
+  - type: Physics
+    bodyType: Static
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: ActivatableUI
+    key: enum.BreedStationUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+    - key: enum.BreedStationUiKey.Key
+      type: BreedStationBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 250
+
+  # TODO Construction recipe

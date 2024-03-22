@@ -5,7 +5,7 @@ namespace Content.Client.Genetics.UI
 {
 
     /// <summary>
-    /// Initializes a <see cref="ChemMasterWindow"/> and updates it when new server messages are received.
+    /// Initializes a <see cref="BreedStationWindow"/> and updates it when new server messages are received.
     /// </summary>
 
     [UsedImplicitly]
@@ -32,4 +32,4 @@ namespace Content.Client.Genetics.UI
             }
         }
     }
-}
+
